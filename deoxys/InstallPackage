@@ -1,23 +1,12 @@
 #!/bin/sh
 
-RED='\033[0;31m'
-NC='\033[0m' # No Color
-
-apt install build-essential cmake git libpoco-dev libeigen3-dev -y
-
-# For protoc
-apt-get install autoconf automake libtool curl make g++ unzip -y
-
-# For zmq
-apt-get install libzmq3-dev -y
-
 # download libfranka
 git clone --recursive https://github.com/frankaemika/libfranka
 cd libfranka
 
-echo "Which libfranka version are you going to use? (currently supporting 0.8.0 and 0.9.0, can do 0.10.0 but no guarantee)"
-read version
-echo "chose libfranka ${version}"
+# echo "Which libfranka version are you going to use? (currently supporting 0.8.0 and 0.9.0, can do 0.10.0 but no guarantee)"
+# read version
+# echo "chose libfranka ${version}"
 # if [[ "$version" != "0.8.0" && "$version" != "0.9.0" && "$version" != "0.10.0" ]]
 # then
 #     printf "${RED} The version ${version} won't be supported!!! \n ${NC}"
@@ -52,7 +41,4 @@ make check
 make install
 ldconfig # refresh shared library cache.
 
-# Install other apt packages
-apt install libreadline-dev -y
-apt install bzip2 -y
-apt install libmotif-dev libglfw3 -y
+
